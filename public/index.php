@@ -18,8 +18,10 @@ for ($i = 0; $i < 5; $i++) {
     $nums[$i] = array_slice($col, 0, 5);
 }
 
-// var_dump($nums);
-// exit;
+$nums[2][2] = "FREE";
+function h($s) {
+    return htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
+}
 
 ?>
 
@@ -42,13 +44,14 @@ for ($i = 0; $i < 5; $i++) {
                 <th>G</th>
                 <th>O</th>
             </tr>
+            <?php for ($i = 0; $i < 5; $i++) : ?>
             <tr>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
+            <!-- 縦にnums[0][1~4]を出すにはnums[$j][$i]とする -->
+                <?php for ($j = 0; $j < 5; $j++) : ?>
+                <td><?= h($nums[$j][$i]); ?></td>
+                <?php endfor; ?>
             </tr>
+            <?php endfor; ?>
         </table>
     </div>
 </body>
